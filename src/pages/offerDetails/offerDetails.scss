@@ -1,0 +1,66 @@
+.offer_details {
+  .image_offer {
+    img {
+      border-radius: 12px;
+      height: 250px;
+    }
+  }
+
+  .details,
+  .features {
+    border-bottom: 1px solid rgb(208, 208, 208);
+  }
+
+  .features {
+    margin-top: 12px;
+
+    ul {
+      li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        &:not(:last-child) {
+          margin-bottom: 12px;
+        }
+
+        svg {
+          color: rgb(30, 234, 3);
+        }
+
+        span {
+          font-weight: 500;
+        }
+      }
+    }
+  }
+
+  .social {
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      &:not(:last-child) {
+        margin-bottom: 5px;
+      }
+
+      span {
+        font-weight: 500;
+        font-size: 17px;
+      }
+
+      &.facebook {
+        svg {
+          color: #1877f2;
+        }
+      }
+
+      &.website {
+        svg {
+          color: var(--primary-color);
+        }
+      }
+    }
+  }
+}

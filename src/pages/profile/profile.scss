@@ -1,0 +1,20 @@
+.profile {
+  .details {
+    margin-top: 60px;
+    height: calc(100vh - 430px);
+
+    .items {
+      .item {
+        &:not(:last-child) {
+          margin-bottom: 12px;
+          padding-bottom: 10px;
+          border-bottom: 1px solid var(--border-color);
+        }
+
+        svg {
+          color: var(--primary-color);
+        }
+      }
+    }
+  }
+}

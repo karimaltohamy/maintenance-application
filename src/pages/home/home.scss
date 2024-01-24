@@ -1,0 +1,29 @@
+.home {
+  .offers_slider {
+    .offer_item {
+      img {
+        height: 250px;
+        border-radius: 12px;
+      }
+    }
+
+    .slick-slider {
+      .slick-prev {
+        left: -10px;
+        z-index: 99;
+      }
+
+      .slick-next {
+        right: -10px;
+        z-index: 99;
+      }
+
+      .slick-next,
+      .slick-prev {
+        &::before {
+          color: black;
+        }
+      }
+    }
+  }
+}

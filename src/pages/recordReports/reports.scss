@@ -1,0 +1,14 @@
+.record_reports {
+  .reports_items {
+    .reports_item {
+      background-color: rgb(238, 238, 238);
+      border-radius: 10px;
+      padding: 10px;
+      display: block;
+
+      &:not(:last-child) {
+        margin-bottom: 15px;
+      }
+    }
+  }
+}

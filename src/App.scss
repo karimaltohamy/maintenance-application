@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #ef102a;
+  --transparnt-primary-color: #fd5165;
+  --second-color: #fff2d8;
+  --bg-main: white;
+  --text-color: black;
+  --box-shadow: rgb(0 0 0 / 35%);
+  --border-color: rgb(217, 217, 217);
+}
+
+html {
+  overflow-x: hidden !important;
+}
+
+body {
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif !important;
+  overflow-x: hidden !important;
+  background-color: var(--bg-main) !important;
+  color: var(--text-color) !important;
+  min-height: 100vh;
+  padding-bottom: 70px;
+
+  &.ar {
+    direction: rtl;
+    font-family: "Cairo", sans-serif !important;
+  }
+
+  &.en {
+    direction: ltr;
+    font-family: "Poppins", sans-serif !important;
+  }
+}
+
+.btn_fill {
+  padding: 8px;
+  border-radius: 8px;
+  color: white;
+  background: linear-gradient(33deg, #ff687a 30%, var(--primary-color) 70%);
+  border: none;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.color_primary {
+  color: var(--primary-color);
+}
+
+.bg_primary {
+  background-color: var(--primary-color);
+}
+
+.bg_transparnt_primary {
+  background-color: var(--transparnt-primary-color);
+}
+
+.container {
+  padding: 0 15px;
+}

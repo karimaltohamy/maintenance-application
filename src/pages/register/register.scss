@@ -1,0 +1,31 @@
+.register {
+  background: linear-gradient(
+    108deg,
+    var(--transparnt-primary-color) 30%,
+    var(--primary-color) 70%
+  );
+  form {
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    .input {
+      border: 1px solid rgb(195, 195, 195);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px;
+      border-radius: 8px;
+      width: 100%;
+
+      &:not(:last-child) {
+        margin-bottom: 15px;
+      }
+
+      input {
+        flex: 1;
+        width: 100%;
+        outline: none;
+        font-size: 17px;
+      }
+    }
+  }
+}

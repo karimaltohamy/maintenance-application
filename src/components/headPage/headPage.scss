@@ -1,0 +1,17 @@
+.head_page {
+  padding: 10px 15px;
+  margin-bottom: 25px;
+  .arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(194, 194, 194);
+
+    svg {
+      color: rgb(59, 59, 59);
+    }
+  }
+}
