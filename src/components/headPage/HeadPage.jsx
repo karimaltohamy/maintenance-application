@@ -5,8 +5,14 @@ import "./headPage.scss";
 
 const HeadPage = ({ title }) => {
   const navigate = useNavigate();
+  const lang = localStorage.getItem("lang");
+
   return (
-    <div className="head_page flex items-center justify-between">
+    <div
+      className={`head_page flex items-center justify-between ${
+        lang == "ar" && "flex-row-reverse"
+      }`}
+    >
       <Link className="arrow" onClick={() => navigate(-1)}>
         <IoMdArrowBack size={21} />
       </Link>

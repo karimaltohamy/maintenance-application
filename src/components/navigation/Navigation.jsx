@@ -4,8 +4,11 @@ import { RiNotification2Line } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";
 import { LuClipboardList } from "react-icons/lu";
 import "./navigation.scss";
+import { useTranslation } from "react-i18next";
 
 const Navigation = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="navigation">
       <div className="links">
@@ -14,28 +17,28 @@ const Navigation = () => {
           className={({ isActive }) => (isActive ? "link active" : "link")}
         >
           <CgProfile size={25} />
-          <span>Profile</span>
+          <span>{t("Profile")}</span>
         </NavLink>
         <NavLink
           to={"/"}
           className={({ isActive }) => (isActive ? "link active" : "link")}
         >
           <FiHome size={25} />
-          <span>Home</span>
+          <span>{t("Home")}</span>
         </NavLink>
         <NavLink
           to={"/notification"}
           className={({ isActive }) => (isActive ? "link active" : "link")}
         >
           <RiNotification2Line size={25} />
-          <span>Notification</span>
+          <span>{t("Notification")}</span>
         </NavLink>
         <NavLink
           to={"/record-reports"}
           className={({ isActive }) => (isActive ? "link active" : "link")}
         >
           <LuClipboardList size={25} />
-          <span>Reports</span>
+          <span>{t("Reports")}</span>
         </NavLink>
       </div>
     </div>
