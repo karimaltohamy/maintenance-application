@@ -14,22 +14,11 @@
   .features {
     margin-top: 12px;
 
-    ul {
-      li {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-
+    .items {
+      p {
+        font-weight: 500;
         &:not(:last-child) {
-          margin-bottom: 12px;
-        }
-
-        svg {
-          color: rgb(30, 234, 3);
-        }
-
-        span {
-          font-weight: 500;
+          margin-bottom: 10px;
         }
       }
     }

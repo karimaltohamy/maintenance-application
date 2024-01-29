@@ -4,31 +4,40 @@
   background-color: var(--second-color);
 
   form {
-    .input_item {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      border: 1px solid var(--border-color);
-      padding: 8px;
-      border-radius: 8px;
-
+    .item {
       &:not(:last-child) {
         margin-bottom: 10px;
       }
 
-      input {
-        flex: 1;
-        background-color: transparent;
-        outline: none;
-        color: gray;
+      .input_item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        border: 1px solid var(--border-color);
+        padding: 8px;
+        border-radius: 8px;
 
-        &::placeholder {
+        input {
+          flex: 1;
+          background-color: transparent;
+          outline: none;
+          color: gray;
+
+          &::placeholder {
+            color: gray;
+          }
+        }
+
+        svg {
           color: gray;
         }
       }
 
-      svg {
-        color: gray;
+      .error {
+        text-align: start;
+        margin-top: 5px;
+        font-size: 13px;
+        color: red;
       }
     }
   }

@@ -7,24 +7,38 @@
   form {
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
-    .input {
-      border: 1px solid rgb(195, 195, 195);
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      padding: 10px;
-      border-radius: 8px;
+    background-color: var(--bg-main);
+
+    .item {
       width: 100%;
 
       &:not(:last-child) {
         margin-bottom: 15px;
       }
 
-      input {
-        flex: 1;
+      .input {
+        border: 1px solid rgb(195, 195, 195);
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 10px;
+        border-radius: 8px;
         width: 100%;
-        outline: none;
-        font-size: 17px;
+
+        input {
+          flex: 1;
+          width: 100%;
+          outline: none;
+          font-size: 17px;
+          background-color: transparent;
+        }
+      }
+
+      .error {
+        text-align: start;
+        margin-top: 5px;
+        font-size: 13px;
+        color: red;
       }
     }
   }

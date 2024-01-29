@@ -6,6 +6,13 @@ import { useEffect } from "react";
 
 function App() {
   useEffect(() => {
+    // theme mode
+    if (localStorage.getItem("mode") == "dark") {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+
     // default lang
     if (localStorage.getItem("lang") == "ar") {
       document.body.classList.add("ar");

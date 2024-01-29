@@ -2,16 +2,18 @@ import { useState } from "react";
 import HeadPage from "../../components/headPage/HeadPage";
 import "./notifications.scss";
 import PopupNotification from "../../components/popupNotification/PopupNotification";
+import { useTranslation } from "react-i18next";
 
 const Notification = () => {
+  const { t } = useTranslation();
   const [openNotification, setopenNotification] = useState(false);
   // const [messageDetails, setMessageDetails] = useState("")
 
   return (
     <div className="notification_page">
-      <HeadPage title={"Notification"} />
+      <HeadPage title={t("Notification")} />
       <div className="container">
-        <h4 className="text-[22px] font-semibold mb-3">Notification:</h4>
+        <h4 className="text-[22px] font-semibold mb-3">{t("Notification")}:</h4>
         <div className="notifications_items">
           <div
             className="notifications_item"

@@ -5,9 +5,11 @@ import { CgProfile } from "react-icons/cg";
 import { LuClipboardList } from "react-icons/lu";
 import "./navigation.scss";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
 const Navigation = () => {
   const { t } = useTranslation();
+  const { userInfo } = useSelector((state) => state.user);
 
   return (
     <div className="navigation">
@@ -32,6 +34,7 @@ const Navigation = () => {
         >
           <RiNotification2Line size={25} />
           <span>{t("Notification")}</span>
+          <small className="num_notification">{userInfo.notification}</small>
         </NavLink>
         <NavLink
           to={"/record-reports"}

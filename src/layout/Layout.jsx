@@ -1,15 +1,36 @@
-import { Fragment, useEffect, useState } from "react";
+import React, { Fragment, Suspense, useEffect, useState } from "react";
 import Navigation from "../components/navigation/Navigation";
-import { Route, Routes } from "react-router-dom";
-import Home from "../pages/home/Home";
-import Login from "../pages/login/Login";
-import Register from "../pages/register/Register";
-import Profile from "../pages/profile/Profile";
-import RecordReports from "../pages/recordReports/RecordReports";
-import Notification from "../pages/notification/Notification";
-import Settings from "../pages/settings/Settings";
-import OfferDetails from "../pages/offerDetails/OfferDetails";
-import ReportsDetails from "../pages/reportsDetails/ReportsDetails";
+import { Navigate, Route, Routes } from "react-router-dom";
+import Loader from "../components/loader/Loader";
+import { useSelector } from "react-redux";
+const Home = React.lazy(() => import("../pages/home/Home"));
+const Login = React.lazy(() => import("../pages/login/Login"));
+const Register = React.lazy(() => import("../pages/register/Register"));
+const Profile = React.lazy(() => import("../pages/profile/Profile"));
+const RecordReports = React.lazy(() =>
+  import("../pages/recordReports/RecordReports")
+);
+const Notification = React.lazy(() =>
+  import("../pages/notification/Notification")
+);
+const Settings = React.lazy(() => import("../pages/settings/Settings"));
+const OfferDetails = React.lazy(() =>
+  import("../pages/offerDetails/OfferDetails")
+);
+const ReportsDetails = React.lazy(() =>
+  import("../pages/reportsDetails/ReportsDetails")
+);
+
+// eslint-disable-next-line react/prop-types
+const ProidectedRoute = ({ children }) => {
+  const { userInfo } = useSelector((state) => state.user);
+
+  if (userInfo === null) {
+    return <Navigate to={"/login"} />;
+  }
+
+  return children;
+};
 
 const Layout = () => {
   const [mobile, setMobile] = useState(false);
@@ -27,15 +48,90 @@ const Layout = () => {
       {!location.pathname.includes("login") &&
         !location.pathname.includes("register") && <Navigation />}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/record-reports" element={<RecordReports />} />
-        <Route path="/notification" element={<Notification />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/offers/:id" element={<OfferDetails />} />
-        <Route path="/reports/:id" element={<ReportsDetails />} />
+        <Route
+          path="/"
+          element={
+            <ProidectedRoute>
+              <Home />
+            </ProidectedRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Login />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Register />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ProidectedRoute>
+                <Profile />
+              </ProidectedRoute>
+            </Suspense>
+          }
+        />
+        <Route
+          path="/record-reports"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ProidectedRoute>
+                <RecordReports />
+              </ProidectedRoute>
+            </Suspense>
+          }
+        />
+        <Route
+          path="/notification"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ProidectedRoute>
+                <Notification />
+              </ProidectedRoute>
+            </Suspense>
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ProidectedRoute>
+                <Settings />
+              </ProidectedRoute>
+            </Suspense>
+          }
+        />
+        <Route
+          path="/offers/:id"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ProidectedRoute>
+                <OfferDetails />
+              </ProidectedRoute>
+            </Suspense>
+          }
+        />
+        <Route
+          path="/reports/:id"
+          element={
+            <Suspense fallback={<Loader />}>
+              <ProidectedRoute>
+                <ReportsDetails />
+              </ProidectedRoute>
+            </Suspense>
+          }
+        />
       </Routes>
     </Fragment>
   ) : (

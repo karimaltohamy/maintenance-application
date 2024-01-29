@@ -14,6 +14,7 @@
   --text-color: black;
   --box-shadow: rgb(0 0 0 / 35%);
   --border-color: rgb(217, 217, 217);
+  --bg-box: rgb(238, 238, 238);
 }
 
 html {
@@ -28,6 +29,17 @@ body {
   color: var(--text-color) !important;
   min-height: 100vh;
   padding-bottom: 80px;
+
+  &.dark {
+    --primary-color: #ef102a;
+    --transparnt-primary-color: #fd5165;
+    --second-color: #08102a;
+    --bg-main: #030e21;
+    --text-color: white;
+    --box-shadow: rgba(12, 11, 11, 0.875);
+    --border-color: rgb(217, 217, 217);
+    --bg-box: #08102a;
+  }
 
   &.ar {
     direction: rtl;
