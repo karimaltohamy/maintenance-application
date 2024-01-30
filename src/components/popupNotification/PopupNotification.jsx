@@ -1,8 +1,9 @@
 import { MdOutlineClose } from "react-icons/md";
 import "./poupNotification.scss";
 import { createPortal } from "react-dom";
+import { formateDate } from "../../utils/formatDate";
 
-const PopupNotification = ({ message, setOpen }) => {
+const PopupNotification = ({ notification, setOpen }) => {
   return createPortal(
     <div className="popup_notification">
       <div className="content">
@@ -10,10 +11,12 @@ const PopupNotification = ({ message, setOpen }) => {
           <MdOutlineClose size={22} />
         </div>
         <div className="top flex items-center justify-between gap-3">
-          <h5 className="text-[18px] font-semibold">tazkarti</h5>
-          <span className="date text-gray-500">12-2-2023</span>
+          <h5 className="text-[18px] font-semibold"></h5>
+          <span className="date text-gray-500">
+            {formateDate(notification.created_at && notification.created_at)}
+          </span>
         </div>
-        <p className="message text-gray-500">{message}</p>
+        <p className="message text-gray-500">{notification.text}</p>
       </div>
     </div>,
     document.getElementById("popups")

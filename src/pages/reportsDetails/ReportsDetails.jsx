@@ -52,22 +52,7 @@ const ReportsDetails = () => {
         </h5>
         <div className="desc mt-3">
           <p className="text-gray-500 mb-2">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates
-            aliquid quo, tempore impedit fugiat ratione quas natus incidunt,
-            eveniet itaque magnam nihil quos quasi dignissimos. Harum tempora
-            porro alias nulla.
-          </p>
-          <p className="text-gray-500 mb-2">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates
-            aliquid quo, tempore impedit fugiat ratione quas natus incidunt,
-            eveniet itaque magnam nihil quos quasi dignissimos. Harum tempora
-            porro alias nulla.
-          </p>
-          <p className="text-gray-500">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates
-            aliquid quo, tempore impedit fugiat ratione quas natus incidunt,
-            eveniet itaque magnam nihil quos quasi dignissimos. Harum tempora
-            porro alias nulla.
+            {report.description && report.description}
           </p>
         </div>
       </div>

@@ -52,7 +52,9 @@ const Layout = () => {
           path="/"
           element={
             <ProidectedRoute>
-              <Home />
+              <Suspense fallback={<Loader />}>
+                <Home />
+              </Suspense>
             </ProidectedRoute>
           }
         />

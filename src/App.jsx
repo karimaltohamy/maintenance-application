@@ -3,9 +3,19 @@ import Layout from "./layout/Layout";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useEffect } from "react";
+import { generateToken, messaging } from "./firebase";
+import { onMessage } from "firebase/messaging";
+import { toast } from "react-toastify";
 
 function App() {
   useEffect(() => {
+    generateToken();
+    onMessage(messaging, (paylod) => {
+      toast(paylod.data.body);
+    });
+
+    toast("message");
+
     // theme mode
     if (localStorage.getItem("mode") == "dark") {
       document.body.classList.add("dark");

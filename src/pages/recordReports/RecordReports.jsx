@@ -4,14 +4,16 @@ import "./reports.scss";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import apiAxios from "../../utils/apiAxios";
-import Loader from "../../components/loader/Loader";
 import { formateDate } from "../../utils/formatDate";
+import InfiniteScroll from "react-infinite-scroll-component";
+import SmallLoader from "../../components/smallLoader/SmallLoader";
 
 const RecordReports = () => {
   const { t } = useTranslation();
   const [loading, setLoading] = useState("");
   const [reports, setReports] = useState([]);
   const [page, setPage] = useState(1);
+  const [lastPage, setLastPage] = useState(1);
 
   useEffect(() => {
     (async () => {
@@ -19,6 +21,7 @@ const RecordReports = () => {
       try {
         const { data } = await apiAxios.get(`/report?page=${page}`);
         setReports(data.data.data);
+        setLastPage(data.data.last_page);
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -27,20 +30,9 @@ const RecordReports = () => {
     })();
   }, [page]);
 
-  const handleScroll = () => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop + 1 >=
-      document.documentElement.scrollHeight
-    ) {
-      setPage((prev) => prev + 1);
-    }
+  const fetchData = () => {
+    setPage(page + 1);
   };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <div className="record_reports">
@@ -53,22 +45,27 @@ const RecordReports = () => {
               return (
                 <Link
                   to={`/reports/${item.id}`}
-                  className="reports_item"
+                  className="report_item"
                   key={i}
                 >
                   <div className="top flex items-center justify-between gap-3">
                     <h5 className="text-[18px] font-semibold">{item.name}</h5>
                     <span className="date text-gray-500">
-                      {formateDate(item.created_at)}
+                      {formateDate(item.created_at && item.created_at)}
                     </span>
                   </div>
                   <p>{item.description}</p>
                 </Link>
               );
             })}
+          <InfiniteScroll
+            dataLength={reports.length}
+            next={fetchData}
+            hasMore={page < lastPage ? true : false}
+            loader={<SmallLoader />}
+          ></InfiniteScroll>
         </div>
       </div>
-      {loading && <Loader />}
     </div>
   );
 };

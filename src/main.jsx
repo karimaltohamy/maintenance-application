@@ -17,7 +17,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Provider store={store}>
           <App />
           <ToastContainer
-            position="bottom-center"
+            position="top-center"
             autoClose={5000}
             hideProgressBar={false}
             newestOnTop={false}
@@ -27,6 +27,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             draggable
             pauseOnHover
             theme="light"
+            style={{ top: 0 }}
           />
         </Provider>
       </I18nextProvider>

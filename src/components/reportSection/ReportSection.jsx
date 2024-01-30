@@ -11,12 +11,10 @@ import { PiAddressBook } from "react-icons/pi";
 import { useState } from "react";
 import apiAxios from "../../utils/apiAxios";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
 
 const ReportSection = () => {
   const { t } = useTranslation();
-  const { userInfo } = useSelector((state) => state.user);
-  const [name, setName] = useState(userInfo.name || "");
+  const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [deviceType, setDeviceType] = useState("");
   const [description, setDescription] = useState("");
