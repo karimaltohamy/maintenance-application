@@ -14,8 +14,6 @@ function App() {
       toast(paylod.data.body);
     });
 
-    toast("message");
-
     // theme mode
     if (localStorage.getItem("mode") == "dark") {
       document.body.classList.add("dark");

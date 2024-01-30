@@ -3,7 +3,7 @@ import Navigation from "../components/navigation/Navigation";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Loader from "../components/loader/Loader";
 import { useSelector } from "react-redux";
-const Home = React.lazy(() => import("../pages/home/Home"));
+import Home from "../pages/home/Home"
 const Login = React.lazy(() => import("../pages/login/Login"));
 const Register = React.lazy(() => import("../pages/register/Register"));
 const Profile = React.lazy(() => import("../pages/profile/Profile"));
@@ -52,9 +52,7 @@ const Layout = () => {
           path="/"
           element={
             <ProidectedRoute>
-              <Suspense fallback={<Loader />}>
                 <Home />
-              </Suspense>
             </ProidectedRoute>
           }
         />
