@@ -46,7 +46,7 @@ const Layout = () => {
   return mobile ? (
     <Fragment>
       {!location.pathname.includes("login") &&
-       !location.pathname.includes("register") && && <Navigation />}
+       !location.pathname.includes("register") && <Navigation />}
       <Routes>
         <Route
           path="/"
