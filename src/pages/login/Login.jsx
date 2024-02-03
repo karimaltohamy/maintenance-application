@@ -15,6 +15,8 @@ import {
 import apiAxios from "../../utils/apiAxios";
 import { toast } from "react-toastify";
 import Loader from "../../components/loader/Loader";
+import GoogleLogin from "@leecheuk/react-google-login";
+import { clientId } from "../../utils/data";
 
 const Login = () => {
   const { t } = useTranslation();
@@ -49,6 +51,38 @@ const Login = () => {
       toast.error(error.response.data.errors);
       dispatch(setUserError());
     }
+  };
+
+  const onSuccess = async (res) => {
+    const { profileObj, googleId } = res;
+    dispatch(setUserStart());
+    try {
+      const { data } = await apiAxios.post("auth/gmail", {
+        name: profileObj.name,
+        email: profileObj.email,
+        google_id: googleId,
+        company_id: 1,
+      });
+      dispatch(setUserSuccess(data.data));
+      localStorage.setItem("access_token", data.access_token);
+      localStorage.setItem("auth_gmail", data.auth_gmail);
+      apiAxios.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${data.access_token}`;
+      toast.success(
+        data.success && lang == "en"
+          ? "Successful login"
+          : "تم تسجيل الدخول بنجاح"
+      );
+      navigate("/");
+    } catch (error) {
+      toast.error(error.response.data.errors);
+      dispatch(setUserError());
+    }
+  };
+
+  const onFailure = () => {
+    toast.error(lang == "en" ? "Failure Sign in" : "فشل تسجيل الدخول");
   };
 
   return (
@@ -91,6 +125,16 @@ const Login = () => {
             />
           </div>
           <button className="btn_fill mb-4">{t("Login")}</button>
+          <div className="btn_google">
+            <GoogleLogin
+              clientId={clientId}
+              buttonText={t("Continue with google")}
+              onSuccess={onSuccess}
+              onFailure={onFailure}
+              cookiePolicy="single_host_origin"
+              isSignedIn={true}
+            />
+          </div>
           <p className="text-center text-gray-500 font-medium ">
             {t("Don't have an account?")}{" "}
             <Link to={"/register"} className="color_primary">

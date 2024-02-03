@@ -41,5 +41,7 @@
   "Age": "Age",
   "Country": "Country",
   "Type Device": "Type Device",
-  "Message": "Message"
+  "Message": "Message",
+  "Please login now": "Please login now",
+  "Continue with google": "Continue with google"
 }

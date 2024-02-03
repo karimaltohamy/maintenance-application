@@ -41,5 +41,7 @@
   "Age": "العمر",
   "Country": "الدوله",
   "Type Device": "نوع الجهاز",
-  "Message": "رساله"
+  "Message": "رساله",
+  "Please login now": "يرجي تسجيل الدخول الان",
+  "Continue with google": "الاستمرار مع جوجل"
 }

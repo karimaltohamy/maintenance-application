@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiAxios = axios.create({
-  baseURL: "https://ma.5code.net/api/client/",
+  baseURL: "http://ma.5code.net/api/client/",
   headers: {
     "Content-Type": "application/json",
     Accept: " application/json",

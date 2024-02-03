@@ -10,9 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@leecheuk/react-google-login": "^5.4.1",
     "@reduxjs/toolkit": "^2.1.0",
     "axios": "^1.6.7",
     "firebase": "^10.7.2",
+    "gapi-script": "^1.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^14.0.1",

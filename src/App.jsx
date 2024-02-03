@@ -6,13 +6,25 @@ import { useEffect } from "react";
 import { generateToken, messaging } from "./firebase";
 import { onMessage } from "firebase/messaging";
 import { toast } from "react-toastify";
+import { gapi } from "gapi-script";
+import { clientId } from "./utils/data";
 
 function App() {
   useEffect(() => {
+    // generate token for notigication
     generateToken();
     onMessage(messaging, (paylod) => {
       toast(paylod.data.body);
     });
+
+    function start() {
+      gapi.client.init({
+        clientId: clientId,
+        scope: "",
+      });
+    }
+
+    gapi.load("client:auth2", start);
 
     // theme mode
     if (localStorage.getItem("mode") == "dark") {

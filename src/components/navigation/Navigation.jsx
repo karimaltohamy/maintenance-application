@@ -35,7 +35,7 @@ const Navigation = () => {
           <RiNotification2Line size={25} />
           <span>{t("Notification")}</span>
           <small className="num_notification">
-            {userInfo && userInfo.notification}
+            {userInfo?.notification && userInfo.notification}
           </small>
         </NavLink>
         <NavLink

@@ -11,6 +11,8 @@ import { PiAddressBook } from "react-icons/pi";
 import { useState } from "react";
 import apiAxios from "../../utils/apiAxios";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const ReportSection = () => {
   const { t } = useTranslation();
@@ -23,9 +25,16 @@ const ReportSection = () => {
   const [area, setArea] = useState("");
   const lang = localStorage.getItem("lang");
   const [errors, setErrors] = useState(null);
+  const { userInfo } = useSelector((state) => state.user);
+  const navigate = useNavigate();
 
   const handleReport = async (e) => {
     e.preventDefault();
+
+    if (!userInfo) {
+      return navigate("/login");
+    }
+
     try {
       const { data } = await apiAxios.post("/report", {
         name,

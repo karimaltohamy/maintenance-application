@@ -29,5 +29,31 @@
         background-color: transparent;
       }
     }
+
+    .btn_google {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      background-color: var(--bg-box);
+      margin-bottom: 10px;
+
+      button {
+        box-shadow: unset !important;
+        background-color: transparent !important;
+        font-family: inherit !important;
+        font-weight: 600 !important;
+
+        div {
+          border-radius: 50% !important;
+        }
+
+        span {
+          font-size: 17px !important;
+          font-weight: 600 !important;
+        }
+      }
+    }
   }
 }

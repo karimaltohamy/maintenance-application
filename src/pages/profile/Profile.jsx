@@ -10,12 +10,24 @@ import apiAxios from "../../utils/apiAxios";
 import { useDispatch } from "react-redux";
 import { setLogout } from "../../store/reducers/userReducer";
 import { useNavigate } from "react-router-dom";
+import { useGoogleLogout } from "@leecheuk/react-google-login";
+import { clientId } from "../../utils/data";
 
 const Profile = () => {
   const { t } = useTranslation();
   const [profile, setProfile] = useState({});
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const authGmail = localStorage.getItem("auth_gmail");
+  const { signOut } = useGoogleLogout({
+    clientId: clientId,
+    onLogoutSuccess: () => {
+      console.log("Logout successful");
+    },
+    onFailure: (error) => {
+      console.log("Logout failed:", error);
+    },
+  });
 
   useEffect(() => {
     (async () => {
@@ -33,6 +45,9 @@ const Profile = () => {
       await apiAxios.post("/logout");
       dispatch(setLogout());
       navigate("/login");
+      authGmail && signOut();
+      document.cookie =
+        "G_AUTHUSER_H=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     } catch (error) {
       console.log(error);
     }
@@ -73,15 +88,17 @@ const Profile = () => {
                 {profile && profile.email}
               </span>
             </div>
-            <div className="item flex items-center justify-between gap-3">
-              <h4 className="text-[18px] font-semibold flex items-center gap-2">
-                <MdLocalPhone size={25} />
-                {t("Phone")}:
-              </h4>
-              <span className={"text-gray-500"}>
-                {profile && profile.phone}
-              </span>
-            </div>
+            {profile.phone && (
+              <div className="item flex items-center justify-between gap-3">
+                <h4 className="text-[18px] font-semibold flex items-center gap-2">
+                  <MdLocalPhone size={25} />
+                  {t("Phone")}:
+                </h4>
+                <span className={"text-gray-500"}>
+                  {profile && profile.phone}
+                </span>
+              </div>
+            )}
             <div className="item flex items-center justify-between gap-3">
               <h4 className="text-[18px] font-semibold flex items-center gap-2">
                 <MdOutlineLocationCity size={25} />
