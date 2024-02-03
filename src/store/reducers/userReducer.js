@@ -27,7 +27,8 @@ const userReducer = createSlice({
     },
     setLogout: (state) => {
       state.userInfo = null;
-      localStorage.setItem("user", null);
+      localStorage.removeItem("user");
+      localStorage.removeItem("access_token");
     },
   },
 });
