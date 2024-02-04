@@ -12,10 +12,11 @@ import { setLogout } from "../../store/reducers/userReducer";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogout } from "@leecheuk/react-google-login";
 import { clientId } from "../../utils/data";
+import useFetch from "../../hooks/useFetch";
 
 const Profile = () => {
   const { t } = useTranslation();
-  const [profile, setProfile] = useState({});
+  const { data: profile } = useFetch("/profile");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const authGmail = localStorage.getItem("auth_gmail");
@@ -28,17 +29,6 @@ const Profile = () => {
       console.log("Logout failed:", error);
     },
   });
-
-  useEffect(() => {
-    (async () => {
-      try {
-        const { data } = await apiAxios.get("/profile");
-        setProfile(data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
-  }, []);
 
   const handleLogout = async () => {
     try {
@@ -88,7 +78,7 @@ const Profile = () => {
                 {profile && profile.email}
               </span>
             </div>
-            {profile.phone && (
+            {profile?.phone && (
               <div className="item flex items-center justify-between gap-3">
                 <h4 className="text-[18px] font-semibold flex items-center gap-2">
                   <MdLocalPhone size={25} />
