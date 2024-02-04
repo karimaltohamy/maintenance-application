@@ -34,6 +34,7 @@ const ProidectedRoute = ({ children }) => {
 
 const Layout = () => {
   const [mobile, setMobile] = useState(false);
+  const { userInfo } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (window.innerWidth <= 900) {
@@ -41,6 +42,19 @@ const Layout = () => {
     } else {
       setMobile(false);
     }
+    // Apply dynamic styles to the body element
+    document.body.style.setProperty(
+      "--primary-color",
+      userInfo.color1 && userInfo.color1
+    );
+    document.body.style.setProperty(
+      "--transparnt-primary-color",
+      userInfo.color1 && `${userInfo.color1}77`
+    );
+    document.body.style.setProperty(
+      "--second-color",
+      userInfo.color2 && userInfo.color2
+    );
   }, []);
 
   return mobile ? (

@@ -43,6 +43,7 @@ const OfferSection = () => {
               >
                 <img
                   src={`${url}${item.image}`}
+                  className="w-full"
                   alt="offer-img"
                   loading="lazy"
                 />

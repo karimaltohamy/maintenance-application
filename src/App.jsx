@@ -17,6 +17,7 @@ function App() {
       toast(paylod.data.body);
     });
 
+    // auth with gmail
     function start() {
       gapi.client.init({
         clientId: clientId,

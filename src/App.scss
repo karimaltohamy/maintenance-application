@@ -56,7 +56,11 @@ body {
   padding: 8px;
   border-radius: 8px;
   color: white;
-  background: linear-gradient(33deg, #ff687a 30%, var(--primary-color) 70%);
+  background: linear-gradient(
+    33deg,
+    var(--transparnt-primary-color) 30%,
+    var(--primary-color) 70%
+  );
   border: none;
   width: 100%;
   font-size: 18px;
