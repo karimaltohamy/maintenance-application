@@ -45,15 +45,15 @@ const Layout = () => {
     // Apply dynamic styles to the body element
     document.body.style.setProperty(
       "--primary-color",
-      userInfo.color1 && userInfo.color1
+      userInfo.color1 ? userInfo.color1 : "#ef102a"
     );
     document.body.style.setProperty(
       "--transparnt-primary-color",
-      userInfo.color1 && `${userInfo.color1}77`
+      userInfo.color1 ? `${userInfo.color1}77` : "#ef102a77"
     );
     document.body.style.setProperty(
       "--second-color",
-      userInfo.color2 && userInfo.color2
+      userInfo.color2 ? userInfo.color2 : "#fff2d8"
     );
   }, []);
 
@@ -64,6 +64,14 @@ const Layout = () => {
       <Routes>
         <Route
           path="/"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Home />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/home"
           element={
             <Suspense fallback={<Loader />}>
               <Home />
