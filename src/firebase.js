@@ -5,12 +5,13 @@ import apiAxios from "./utils/apiAxios";
 
 // TODO: Replace the following with your app's Firebase project configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBPILoNEbdG-375eDpzMqRXlqhfMDbvI5U",
-  authDomain: "maintenance-2219c.firebaseapp.com",
-  projectId: "maintenance-2219c",
-  storageBucket: "maintenance-2219c.appspot.com",
-  messagingSenderId: "1068888839256",
-  appId: "1:1068888839256:web:219cbdccfb10cbb1c0a62d",
+  apiKey: "AIzaSyAu5akO6Vuczy_Wllbr2Y92jnLHgwkp2dg",
+  authDomain: "maintenance-68e51.firebaseapp.com",
+  projectId: "maintenance-68e51",
+  storageBucket: "maintenance-68e51.appspot.com",
+  messagingSenderId: "676097070554",
+  appId: "1:676097070554:web:6b8349adf59c4ba36e5ce3",
+  measurementId: "G-1LZ8PEGBCQ",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -25,7 +26,7 @@ export const generateToken = async () => {
   ) {
     const token = await getToken(messaging, {
       vapidKey:
-        "BLX5jpgOymmPf5bxWLmAotzHBnBHGVqTrei6qSAurYHoi8g0WybWbmErHnU8Wj6eXhVEE8kzVqAzX4LQavJ44uA",
+        "BCEJXqFS176teaIkdGxx4j0SbhUTVf0prwDVl40nqM5L71s_POoG4c3iVcGlvHWZPH7s5DzCn5zltB96iCnWdYY",
     });
     await apiAxios.put("/fcm_token", {
       token,

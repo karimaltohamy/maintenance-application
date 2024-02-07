@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import { url } from "../../utils/data.js";
 import apiAxios from "../../utils/apiAxios.js";
-import SmallLoader from "../smallLoader/SmallLoader.jsx";
 
 const OfferSection = () => {
   const [offers, setOffers] = useState([]);

@@ -5,7 +5,6 @@ import { MdOutlineMailOutline, MdOutlineLocationCity } from "react-icons/md";
 import { MdLocalPhone } from "react-icons/md";
 import "./profile.scss";
 import { useTranslation } from "react-i18next";
-import { useEffect, useState } from "react";
 import apiAxios from "../../utils/apiAxios";
 import { useDispatch } from "react-redux";
 import { setLogout } from "../../store/reducers/userReducer";
