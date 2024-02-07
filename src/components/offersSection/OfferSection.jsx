@@ -32,7 +32,7 @@ const OfferSection = () => {
   return (
     <div className="offers_slider my-8">
       <Slider {...settings}>
-        {offers &&
+        {offers ? (
           offers.map((item, index) => {
             return (
               <Link
@@ -48,7 +48,10 @@ const OfferSection = () => {
                 />
               </Link>
             );
-          })}
+          })
+        ) : (
+          <SmallLoader />
+        )}
       </Slider>
     </div>
   );

@@ -94,6 +94,7 @@ const Notification = () => {
             hasMore={page < lastPage ? true : false}
             loader={<SmallLoader />}
           ></InfiniteScroll>
+          {loading && <SmallLoader />}
         </div>
       </div>
       {openNotification && (
